@@ -1,0 +1,34 @@
+DELETE http://localhost:8081/api/companies/comp1
+
+###
+
+POST http://localhost:8081/api/companies
+Content-Type: application/json
+
+{
+  "name": "comp3",
+  "budget": 662254.99
+}
+
+###
+
+GET http://localhost:8080/api/companies
+
+###
+
+GET http://localhost:8080/api/companies
+
+<> 2021-11-04T121358.200.json
+
+###
+
+DELETE http://localhost:8080/api/companies/comp1
+
+###
+
+GET http://localhost:8080/api/companies
+
+<> 2021-11-04T121343.200.json
+
+###
+

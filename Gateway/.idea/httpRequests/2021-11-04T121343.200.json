@@ -1,0 +1,12 @@
+{
+  "companies": [
+    {
+      "name": "comp1",
+      "budget": 41857.45
+    },
+    {
+      "name": "comp2",
+      "budget": 68575.65
+    }
+  ]
+}
