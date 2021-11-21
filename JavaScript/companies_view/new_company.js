@@ -14,7 +14,7 @@ function addComapnyAction(event){
 
     const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 202){
+        if (this.readyState === 4 && this.status === 201){
             window.location.reload(true);
         }
     };

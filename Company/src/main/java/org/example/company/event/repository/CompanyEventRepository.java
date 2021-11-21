@@ -10,18 +10,18 @@ import org.springframework.web.client.RestTemplate;
 
 @Repository
 public class CompanyEventRepository {
-    private RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
 
     @Autowired
     public CompanyEventRepository(@Value("${example.employees.url}") String baseUrl) {
         restTemplate = new RestTemplateBuilder().rootUri(baseUrl).build();
     }
 
-    public void delete(Company company){
+    public void delete(Company company) {
         restTemplate.delete("/companies/{company}", company.getName());
     }
 
-    public void create(Company company){
+    public void create(Company company) {
         restTemplate.postForLocation("/companies", CreateCompanyRequest.entityToDtoMapper().apply(company));
     }
 

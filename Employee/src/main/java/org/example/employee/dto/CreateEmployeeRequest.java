@@ -21,7 +21,7 @@ public class CreateEmployeeRequest {
     private Double salary;
     private String companyName;
 
-    public static Function<CreateEmployeeRequest, Employee> dtoToEntityMapper(Function<String, Company>companyFunction, Supplier<Company> companySupplier){
+    public static Function<CreateEmployeeRequest, Employee> dtoToEntityMapper(Function<String, Company> companyFunction, Supplier<Company> companySupplier) {
         return request -> Employee.builder()
                 .firstname(request.getFirstname())
                 .lastname(request.getLastname())
@@ -31,7 +31,7 @@ public class CreateEmployeeRequest {
                 .build();
     }
 
-    public static Function<CreateEmployeeRequest, Employee> dtoToEntityMapper(Supplier<Company> companySupplier){
+    public static Function<CreateEmployeeRequest, Employee> dtoToEntityMapper(Supplier<Company> companySupplier) {
         return request -> Employee.builder()
                 .firstname(request.getFirstname())
                 .lastname(request.getLastname())

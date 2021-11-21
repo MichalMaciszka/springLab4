@@ -4,7 +4,6 @@ package org.example.company.dto;
 import lombok.*;
 import org.example.company.entity.Company;
 
-import java.util.List;
 import java.util.function.Function;
 
 @Getter
@@ -19,7 +18,7 @@ public class GetCompanyResponse {
     private String name;
     private Double budget;
 
-    public static Function<Company, GetCompanyResponse> entityToDtoMapper(){
+    public static Function<Company, GetCompanyResponse> entityToDtoMapper() {
         return company -> GetCompanyResponse.builder()
                 .name(company.getName())
                 .budget(company.getBudget())

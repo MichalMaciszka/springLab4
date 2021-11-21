@@ -1,8 +1,8 @@
 package org.example.config;
 
 import org.example.company.entity.Company;
-import org.example.employee.entity.Employee;
 import org.example.company.service.CompanyService;
+import org.example.employee.entity.Employee;
 import org.example.employee.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,13 +15,13 @@ public class DataInit {
     private final CompanyService companyService;
 
     @Autowired
-    public DataInit(EmployeeService es, CompanyService cs){
+    public DataInit(EmployeeService es, CompanyService cs) {
         employeeService = es;
         companyService = cs;
     }
 
     @PostConstruct
-    private synchronized void init(){
+    private synchronized void init() {
 
         Company c1 = Company.builder()
                 .name("comp1")

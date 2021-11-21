@@ -25,31 +25,30 @@ public class CompanyController {
     }
 
     @GetMapping
-    public ResponseEntity<GetCompaniesResponse> getCompanies(){
+    public ResponseEntity<GetCompaniesResponse> getCompanies() {
         return ResponseEntity.ok(GetCompaniesResponse.entityToDtoMapper().apply(companyService.findAll()));
     }
 
     @GetMapping("{name}")
-    public ResponseEntity<GetCompanyResponse> getCompany(@PathVariable("name") String name){
+    public ResponseEntity<GetCompanyResponse> getCompany(@PathVariable("name") String name) {
         return companyService.find(name)
                 .map(val -> ResponseEntity.ok(GetCompanyResponse.entityToDtoMapper().apply(val)))
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("{name}")
-    public ResponseEntity<Void> deleteCompany(@PathVariable("name") String name){
+    public ResponseEntity<Void> deleteCompany(@PathVariable("name") String name) {
         Optional<Company> company = companyService.find(name);
-        if(company.isPresent()){
+        if (company.isPresent()) {
             companyService.delete(company.get());
             return ResponseEntity.accepted().build();
-        }
-        else{
+        } else {
             return ResponseEntity.notFound().build();
         }
     }
 
     @PostMapping("")
-    public ResponseEntity<Void> createCompany(@RequestBody CreateCompanyRequest request, UriComponentsBuilder builder){
+    public ResponseEntity<Void> createCompany(@RequestBody CreateCompanyRequest request, UriComponentsBuilder builder) {
         Company company = CreateCompanyRequest.dtoToEntityMapper().apply(request);
         companyService.create(company);
         return ResponseEntity.created(builder.pathSegment("api", "companies", "{name}")
@@ -57,14 +56,13 @@ public class CompanyController {
     }
 
     @PutMapping("{name}")
-    public ResponseEntity<Void> updateCompany(@RequestBody UpdateCompanyRequest request, @PathVariable("name") String name){
+    public ResponseEntity<Void> updateCompany(@RequestBody UpdateCompanyRequest request, @PathVariable("name") String name) {
         Optional<Company> company = companyService.find(name);
-        if(company.isPresent()){
+        if (company.isPresent()) {
             UpdateCompanyRequest.dtoToEntityUpdater().apply(company.get(), request);
             companyService.update(company.get());
             return ResponseEntity.accepted().build();
-        }
-        else{
+        } else {
             return ResponseEntity.notFound().build();
         }
     }

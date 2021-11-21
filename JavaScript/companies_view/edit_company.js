@@ -35,8 +35,9 @@ function updateCompanyAction(event){
 
     const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-            fetchCompany();
+        if (this.readyState === 4 && this.status === 202) {
+            window.location.reload(true);
+            //fetchCompany();
         }
     };
     xhttp.open("PUT", getApiUrl() + "/api/companies/" + getParameterByName("name"), true);

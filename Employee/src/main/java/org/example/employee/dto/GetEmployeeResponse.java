@@ -19,7 +19,7 @@ public class GetEmployeeResponse {
     private Double salary;
     private String company;
 
-    public static Function<Employee, GetEmployeeResponse> entityToDtoMapper(){
+    public static Function<Employee, GetEmployeeResponse> entityToDtoMapper() {
         return employee -> GetEmployeeResponse.builder()
                 .id(employee.getId())
                 .firstname(employee.getFirstname())

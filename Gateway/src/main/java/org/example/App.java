@@ -7,7 +7,6 @@ import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.reactive.CorsConfigurationSource;
 import org.springframework.web.cors.reactive.CorsWebFilter;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
@@ -21,10 +20,10 @@ public class App {
     }
 
     @Bean
-    public RouteLocator customRouteLocator(RouteLocatorBuilder builder){
+    public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder
                 .routes()
-                .route("companies", r-> r
+                .route("companies", r -> r
                         .host("localhost:8080")
                         .and()
                         .path("/api/companies/{company}", "/api/companies")

@@ -3,7 +3,6 @@ package org.example.company.entity;
 
 import lombok.*;
 import org.example.employee.entity.Employee;
-import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.List;

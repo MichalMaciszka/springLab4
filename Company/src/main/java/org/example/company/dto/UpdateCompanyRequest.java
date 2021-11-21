@@ -16,7 +16,7 @@ import java.util.function.BiFunction;
 public class UpdateCompanyRequest {
     private Double budget;
 
-    public static BiFunction<Company, UpdateCompanyRequest, Company> dtoToEntityUpdater(){
+    public static BiFunction<Company, UpdateCompanyRequest, Company> dtoToEntityUpdater() {
         return (company, request) -> {
             company.setBudget(request.getBudget());
             return company;

@@ -17,7 +17,7 @@ public class DataInit {
     }
 
     @PostConstruct
-    private synchronized void init(){
+    private synchronized void init() {
         Company c1 = Company.builder()
                 .name("comp1")
                 .budget(41857.45)

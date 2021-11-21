@@ -33,8 +33,9 @@ function updateEmployeeAction(event){
 
     const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
-        if(this.readyState === 4 && this.status === 200){
-            fetchEmployee();
+        if(this.readyState === 4 && this.status === 202){
+            window.location.reload(true);
+            // fetchEmployee();
         }
     };
 

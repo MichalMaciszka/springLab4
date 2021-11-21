@@ -16,23 +16,10 @@ import java.util.function.Function;
 @EqualsAndHashCode
 public class GetEmployeesResponse {
 
-    @Getter
-    @Setter
-    @Builder
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @ToString
-    @EqualsAndHashCode
-    public static class Employee{
-        private Integer id;
-        private String firstname;
-        private String lastname;
-    }
-
     @Singular
     private List<Employee> employees;
 
-    public static Function<Collection<org.example.employee.entity.Employee>, GetEmployeesResponse> entityToDtoMapper(){
+    public static Function<Collection<org.example.employee.entity.Employee>, GetEmployeesResponse> entityToDtoMapper() {
         return employees -> {
             GetEmployeesResponseBuilder response = GetEmployeesResponse.builder();
             employees.stream()
@@ -44,5 +31,18 @@ public class GetEmployeesResponse {
                     .forEach(response::employee);
             return response.build();
         };
+    }
+
+    @Getter
+    @Setter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @ToString
+    @EqualsAndHashCode
+    public static class Employee {
+        private Integer id;
+        private String firstname;
+        private String lastname;
     }
 }

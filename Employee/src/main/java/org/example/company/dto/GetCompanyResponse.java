@@ -21,7 +21,7 @@ public class GetCompanyResponse {
     private Double budget;
     private List<String> names;
 
-    public static Function<Company, GetCompanyResponse> entityToDtoMapper(){
+    public static Function<Company, GetCompanyResponse> entityToDtoMapper() {
         return company -> GetCompanyResponse.builder()
                 .name(company.getName())
 //                .budget(company.getBudget())

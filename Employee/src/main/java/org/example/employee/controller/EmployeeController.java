@@ -28,19 +28,19 @@ public class EmployeeController {
     }
 
     @GetMapping
-    public ResponseEntity<GetEmployeesResponse> getEmployees(){
+    public ResponseEntity<GetEmployeesResponse> getEmployees() {
         return ResponseEntity.ok(GetEmployeesResponse.entityToDtoMapper().apply(employeeService.findAll()));
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<GetEmployeeResponse> getEmployee(@PathVariable("id") Integer id){
+    public ResponseEntity<GetEmployeeResponse> getEmployee(@PathVariable("id") Integer id) {
         return employeeService.findById(id)
                 .map(val -> ResponseEntity.ok(GetEmployeeResponse.entityToDtoMapper().apply(val)))
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ResponseEntity<Void> createEmployee(@RequestBody CreateEmployeeRequest request, UriComponentsBuilder builder){
+    public ResponseEntity<Void> createEmployee(@RequestBody CreateEmployeeRequest request, UriComponentsBuilder builder) {
         Employee employee = CreateEmployeeRequest
                 .dtoToEntityMapper(name -> companyService.find(name).orElseThrow(), () -> null)
                 .apply(request);
@@ -50,26 +50,24 @@ public class EmployeeController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<Void> deleteEmployee(@PathVariable("id") Integer id){
+    public ResponseEntity<Void> deleteEmployee(@PathVariable("id") Integer id) {
         Optional<Employee> employee = employeeService.findById(id);
-        if(employee.isPresent()){
+        if (employee.isPresent()) {
             employeeService.delete(employee.get().getId());
             return ResponseEntity.accepted().build();
-        }
-        else{
+        } else {
             return ResponseEntity.notFound().build();
         }
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Void> updateEmployee(@RequestBody UpdateEmployeeRequest request, @PathVariable("id") Integer id){
+    public ResponseEntity<Void> updateEmployee(@RequestBody UpdateEmployeeRequest request, @PathVariable("id") Integer id) {
         Optional<Employee> employee = employeeService.findById(id);
-        if(employee.isPresent()){
+        if (employee.isPresent()) {
             UpdateEmployeeRequest.dtoToEntityUpdater().apply(employee.get(), request);
             employeeService.update(employee.get());
             return ResponseEntity.accepted().build();
-        }
-        else {
+        } else {
             return ResponseEntity.notFound().build();
         }
     }

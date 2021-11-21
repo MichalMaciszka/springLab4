@@ -16,22 +16,10 @@ import java.util.function.Function;
 @EqualsAndHashCode
 public class GetCompaniesResponse {
 
-    @Getter
-    @Setter
-    @Builder
-    @NoArgsConstructor
-    @AllArgsConstructor(access = AccessLevel.PRIVATE)
-    @ToString
-    @EqualsAndHashCode
-    public static class Company{
-        private String name;
-//        private Double budget;
-    }
-
     @Singular
     private List<Company> companies;
 
-    public static Function<Collection<org.example.company.entity.Company>, GetCompaniesResponse> entityToDtoMapper(){
+    public static Function<Collection<org.example.company.entity.Company>, GetCompaniesResponse> entityToDtoMapper() {
         return companies -> {
             GetCompaniesResponseBuilder response = GetCompaniesResponse.builder();
             companies.stream()
@@ -41,5 +29,17 @@ public class GetCompaniesResponse {
                     .forEach(response::company);
             return response.build();
         };
+    }
+
+    @Getter
+    @Setter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor(access = AccessLevel.PRIVATE)
+    @ToString
+    @EqualsAndHashCode
+    public static class Company {
+        private String name;
+//        private Double budget;
     }
 }

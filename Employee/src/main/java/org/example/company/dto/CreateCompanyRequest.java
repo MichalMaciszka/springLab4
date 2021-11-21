@@ -17,7 +17,7 @@ public class CreateCompanyRequest {
     private String name;
 //    private Double budget;
 
-    public static Function<CreateCompanyRequest, Company> dtoToEntityMapper(){
+    public static Function<CreateCompanyRequest, Company> dtoToEntityMapper() {
         return request -> Company.builder()
                 .name(request.getName())
 //                .budget(request.getBudget())
